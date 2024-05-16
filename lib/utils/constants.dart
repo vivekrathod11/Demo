@@ -13,7 +13,7 @@ class Constants {
 
   // Endpoint
   static const String SHOES = "shoes";
-  static const String APIKEY = "5bf06f2109msh4ff12009dd7e961p18448ejsnf719d9470474";
+  static const String APIKEY = "89208255bcmsh0743f4ca388cd6dp1f235cjsn1d663f1f544b";
   static const String HOST = "shoes-collections.p.rapidapi.com";
 
 
@@ -26,6 +26,7 @@ class Constants {
  // key 2 = "2b220b74c9mshb290c25de5701e5p1673fdjsn4ee6a1fd3bd9"
  // key 3 = "a64eb25ed2msh70a6c6f4ba34283p1150f1jsnbfb4f1df5987"
  // key 4 = "5bf06f2109msh4ff12009dd7e961p18448ejsnf719d9470474"
+ // key 5 = "89208255bcmsh0743f4ca388cd6dp1f235cjsn1d663f1f544b"
 }
 
 
