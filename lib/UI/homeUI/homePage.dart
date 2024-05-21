@@ -80,88 +80,90 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget pageViewWidget() {
-    return SizedBox(
-      width: double.infinity,
-      height: 480.0,
-      child: apiController.data.value.length != null ?
-      PageView.builder(
-        controller: pageController,
-        itemCount: apiController.data.value.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          var items = apiController.data.value[index];
-          var images = items['image'];
-          return SizedBox(
-            height: 200,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                 Stack(
-                   alignment: Alignment.center,
-                   children: [
-                     Center(
-                       child: Padding(
-                         padding: const EdgeInsetsDirectional.only(bottom: 40.0),
-                         child: ClipRRect(
-                           borderRadius: BorderRadius.circular(8.0),
-                           child: SizedBox(
-                             height: 300,
-                             width: 300,
-                             child: CachedNetworkImage(
-                               imageUrl: images.toString(),
+    return Obx(() =>
+       SizedBox(
+        width: double.infinity,
+        height: 480.0,
+        child: apiController.data.value.length != null ?
+        PageView.builder(
+          controller: pageController,
+          itemCount: apiController.data.value.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            var items = apiController.data.value[index];
+            var images = items['image'];
+            return SizedBox(
+              height: 200,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                   Stack(
+                     alignment: Alignment.center,
+                     children: [
+                       Center(
+                         child: Padding(
+                           padding: const EdgeInsetsDirectional.only(bottom: 40.0),
+                           child: ClipRRect(
+                             borderRadius: BorderRadius.circular(8.0),
+                             child: SizedBox(
                                height: 300,
                                width: 300,
-                               fit: BoxFit.cover,
-                               errorWidget: (context, url,
-                                   error) => const Icon(Icons.error),
+                               child: CachedNetworkImage(
+                                 imageUrl: images.toString(),
+                                 height: 300,
+                                 width: 300,
+                                 fit: BoxFit.cover,
+                                 errorWidget: (context, url,
+                                     error) => const Icon(Icons.error),
+                               ),
                              ),
                            ),
                          ),
                        ),
-                     ),
-                     Image.asset("assets/dot.png"),
-                   ],
-                 ),
-                  SizedBox(
-                    width: 300,
-                    child: Text(
-                      items['name'] ?? 'Start Journey With Nike',
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        height: 1,
-                        fontFamily: AppFonts.secFont,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 30,
-                        color: AppColors.blackColor,
+                       Image.asset("assets/dot.png"),
+                     ],
+                   ),
+                    SizedBox(
+                      width: 300,
+                      child: Text(
+                        items['name'] ?? 'Start Journey With Nike',
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(
+                          height: 1,
+                          fontFamily: AppFonts.secFont,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 30,
+                          color: AppColors.blackColor,
+                        ),
                       ),
                     ),
-                  ),
-                 const Text(
-                    "Smart, Gorgeous & Fashionable Collection",
-                    textAlign: TextAlign.left,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: AppFonts.secFont,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: Colors.grey,
+                   const Text(
+                      "Smart, Gorgeous & Fashionable Collection",
+                      textAlign: TextAlign.left,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontFamily: AppFonts.secFont,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      ) :
-      const Center(
-            child: Text(
-              "Please change the api key in the constanst class"
-            ),
-          )
+            );
+          },
+        ) :
+        const Center(
+              child: Text(
+                "Please change the api key in the constanst class"
+              ),
+            )
+      ),
     );
   }
 

@@ -34,6 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
           builder: (context) => const MyHomePage()));
     });
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
